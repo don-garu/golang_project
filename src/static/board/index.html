@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Board</title>
+</head>
+<body>
+<div>
+    <table style="border: 2px solid black;">
+        <thead>
+        <tr>
+            <th>Index</th>
+            <th>Title</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{range .Posts}}
+        <tr>
+            <td>
+                {{.Id}}
+            </td>
+            <td>
+                <a href="http://localhost:9090/posts/{{.Id}}">{{.Title}}</a>
+            </td>
+            <td>
+                <form action="http://localhost:9090/delete_post/{{.Id}}" method="post">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+        {{end}}
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <form action="http://localhost:9090/new_post" method="get">
+        <button type="submit">New Post</button>
+    </form>
+</div>
+</body>
+</html>
